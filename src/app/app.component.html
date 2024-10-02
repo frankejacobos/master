@@ -1,4 +1,4 @@
-<main class="background-primary-1">
+<main>
   <div class="flex gap-16 flex-wrap">
     <button azui-button tipo="primary">hola mundo</button>
     <button azui-button tipo="secondary">hola mundo</button>
@@ -7,7 +7,11 @@
     <button azui-button [disabled]="true" tipo="primary">hola mundo</button>
     <button azui-button [disabled]="true" tipo="secondary">hola mundo</button>
     <button azui-button [disabled]="true" tipo="neutral">hola mundo</button>
-  </div>
 
-  <az-card></az-card>
+    <azui-alert
+      titulo="titulo de prueba"
+      descripcion="descripcion de prueba"
+      [tipoAlerta]="TipoAlerta.Error"
+    ></azui-alert>
+  </div>
 </main>
