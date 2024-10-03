@@ -1,17 +1,157 @@
-<main>
-  <div class="flex gap-16 flex-wrap">
+<main class="flex-column p-16 gap-8">
+  <div class="flex gap-8 flex-wrap">
     <button azui-button tipo="primary">hola mundo</button>
     <button azui-button tipo="secondary">hola mundo</button>
     <button azui-button tipo="neutral">hola mundo</button>
 
+    <azui-divider tipo="vertical"></azui-divider>
+
     <button azui-button [disabled]="true" tipo="primary">hola mundo</button>
     <button azui-button [disabled]="true" tipo="secondary">hola mundo</button>
     <button azui-button [disabled]="true" tipo="neutral">hola mundo</button>
+  </div>
+
+  <azui-divider></azui-divider>
+
+  <div class="flex-column gap-8">
+    <azui-alert
+      titulo="Alerta de éxito"
+      descripcion="Descripción del éxito. Escribe aquí detalles del proceso exitoso."
+      [tipoAlerta]="TipoAlerta.Success"
+    ></azui-alert>
 
     <azui-alert
-      titulo="titulo de prueba"
-      descripcion="descripcion de prueba"
+      titulo="Alerta de precaución"
+      descripcion="Descripción de la precaución. Escribe aquí detalles de la precaución."
+      [tipoAlerta]="TipoAlerta.Warning"
+    ></azui-alert>
+
+    <azui-alert
+      titulo="Alerta de error"
+      descripcion="Descripción de error. Escribe aquí detalles del error."
       [tipoAlerta]="TipoAlerta.Error"
     ></azui-alert>
+
+    <azui-alert
+      titulo="Alerta"
+      descripcion="Descripción neutral. Escribe aquí detalles del proceso."
+      [tipoAlerta]="TipoAlerta.Neutral"
+    ></azui-alert>
+
+    <azui-alert
+      titulo="Alerta destacada"
+      descripcion="Descripción notoria. Escribe aquí detalles de lo que quieres destacar."
+      [tipoAlerta]="TipoAlerta.Primary"
+    ></azui-alert>
+
+    <azui-message
+      descripcion="Un mensaje exitoso"
+      [tipoRespuesta]="TipoAlerta.Success"
+    ></azui-message>
+
+    <azui-message
+      descripcion="Un mensaje precavido"
+      [tipoRespuesta]="TipoAlerta.Warning"
+    ></azui-message>
+
+    <azui-message
+      descripcion="Un mensaje fracasado"
+      [tipoRespuesta]="TipoAlerta.Error"
+    ></azui-message>
+
+    <azui-message
+      descripcion="Un mensaje neutral"
+      [tipoRespuesta]="TipoAlerta.Neutral"
+    ></azui-message>
+
+    <azui-message
+      descripcion="Un mensaje destacado"
+      [tipoRespuesta]="TipoAlerta.Primary"
+    ></azui-message>
   </div>
+
+  <azui-divider></azui-divider>
+
+  <div class="flex gap-8 flex-wrap">
+    <azui-checkbox label="opcion 1"></azui-checkbox>
+    <azui-checkbox label="opcion 2"></azui-checkbox>
+    <azui-checkbox label="opcion 3"></azui-checkbox>
+    <azui-checkbox label="opcion 4"></azui-checkbox>
+
+    <azui-divider tipo="vertical"></azui-divider>
+
+    <azui-checkbox></azui-checkbox>
+    <azui-checkbox></azui-checkbox>
+    <azui-checkbox></azui-checkbox>
+    <azui-checkbox></azui-checkbox>
+    <azui-copy texto="click"></azui-copy>
+  </div>
+
+  <azui-divider></azui-divider>
+
+  <div class="flex-column gap-8">
+    <azui-error errorMessage="error message">
+      <azui-input-group
+        [prefixRef]="prefixbuscar"
+        label="¿Qué estás buscando?"
+        class="expanded"
+      >
+        <input
+          #valorABuscar
+          [autofocus]="true"
+          azui-input
+          maxlength="75"
+          type="text"
+        />
+      </azui-input-group>
+    </azui-error>
+
+    <azui-input-group
+      [prefixRef]="prefixbuscar"
+      label="¿Qué estás buscando?"
+      class="expanded"
+    >
+      <input
+        #valorABuscar
+        [autofocus]="true"
+        azui-input
+        maxlength="75"
+        type="text"
+      />
+    </azui-input-group>
+
+    <ng-template #prefixbuscar>
+      <span azui-icons name="lupa"></span>
+    </ng-template>
+
+    <azui-textarea-group label="Descripcion del grupo" [maxLength]="180">
+      <textarea
+        #azuitextarea
+        formControlName="descripcion"
+        rows="3"
+        class="text-uppercase"
+        maxlength="180"
+      ></textarea>
+    </azui-textarea-group>
+  </div>
+
+  <div class="flex gap-8">
+    <azui-file-upload [beforeUpload]="afterUpload"></azui-file-upload>
+
+    <button azui-button tipo="primary" (click)="showModal()">open modal</button>
+
+    <azui-input-number></azui-input-number>
+  </div>
+
+  <azui-modal
+    [isVisible]="isVisible"
+    etiquetaAceptar="Aceptar"
+    etiquetaCancelar="Cancelar"
+    maxWidth="400px"
+    titulo="Modal de prueba"
+    [handleCancel]="closeModal"
+    (submit)="closeModal()"
+  >
+    <div class="flex-column">texto de relleno</div>
+  </azui-modal>
 </main>
